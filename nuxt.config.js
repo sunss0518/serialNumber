@@ -56,7 +56,7 @@ export default {
   },
   proxy: {
     '/express-starter/': {
-      target: 'https://cloudbase-test-0gol5huy820a6898-1305842996.ap-shanghai.app.tcloudbase.com/express-starter', //API服务器的地址
+      target: 'https://cloudbase-4g8spame80bd317a-1309767942.ap-shanghai.app.tcloudbase.com/express-starter', //API服务器的地址
       pathRewrite: {
         '^/express-starter': ''
       }

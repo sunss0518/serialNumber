@@ -72,18 +72,6 @@ export default {
     this.getStock();
   },
   methods: {
-    test() {
-      let params = {
-        "categoryid": this.categoryid, // 分类id
-        "description": this.categoryname, // 商品描述
-        "openid": this.openid, // 用户id
-        "out_trade_no": "001502", // 订单号   
-        "prepay_id": "4054", // 预付订单id
-        "timestamp": parseInt(new Date().getTime() / 1000), // 时间戳，自1970年以来的秒数
-        "total_fee": this.categoryprice, // 支付金额
-      };
-      this.insertAccount(params);
-    },
     getStock() {
       this.$axios.$post(
         '/express-starter/account/getStock', 

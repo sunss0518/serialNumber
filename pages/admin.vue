@@ -115,7 +115,7 @@
         </div>
         <a-textarea
           v-model="accountPwd"
-          placeholder="示例：account001, password001; account002, password002;"
+          placeholder="示例: account001, password001; account002, password002;"
           :auto-size="{ minRows: 3, maxRows: 20 }"
         />
       </a-layout-content>
@@ -254,12 +254,10 @@ export default {
       this.fileList = fileList;
     },
     uploadImg({ file }) {
-      console.log(file, file.name)
       let param = new FormData(); //new一个formData
       param.append('file', file.originFileObj, file.originFileObj.name); //将文件添加到formdata中
       param.append('chunk', '0');
 
-      // this.axios.post('/api/upload/upavatar?username=' + username, param, config);//传输数据
       this.$axios.$post(
         `/express-starter/category/uploadImg?name=${file.name}`,
         param,
@@ -444,7 +442,6 @@ export default {
     chooseDate(date, dateString) {},
     onOk(value) {
       this.dateRange = JSON.stringify([Date.parse(value[0]), Date.parse(value[1])]);
-      console.log(' this.dateRange',  typeof this.dateRange, this.dateRange)
       this.initCharts();
     },
     /**
@@ -528,38 +525,12 @@ export default {
       )
       .then((res) => {
         this.category = res.res.data;
-        // this.category.map((item) => {
-        //   if (item.fileid) {
-        //     this.$axios.$post(
-        //       '/express-starter/category/getPicUrl',
-        //       {
-        //         fileList: item.fileid
-        //       },
-        //       {
-        //         headers: {
-        //           "Content-Type": "application/json"
-        //         },
-        //       }
-        //     )
-        //     .then((res) => {
-        //       item.picUrl = res.res.tempFileURL;
-        //       console.log(res)
-        //     })
-        //     .catch((error) => {
-        //       console.log(error)
-        //     });
-        //   } else {
-        //     item.picUrl = '';
-        //   }
-          
-        // });
       })
       .catch((error) => {
         console.log(error)
       });
     },
     uploadCategory(e) {
-      console.log('categoryPic', this.categoryPic)
       if (this.categoryName == '' || this.categoryPrice == '' || this.categoryPic == '' || this.categoryDescription == '') {
         this.$message.error('请填写完整的分类信息！');
         return;

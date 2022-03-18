@@ -33,7 +33,6 @@
     </swiper>
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
-    <!-- <div class="swiper-pagination"></div> -->
   </div>
 </template>
 
@@ -60,12 +59,6 @@ export default {
         observer: true,//修改swiper自己或子元素时，自动初始化swiper
         observeParents: true,//修改swiper的父元素时，自动初始化swiper
         effect : 'fade',
-        // cubeEffect: {
-        //   slideShadows: false,
-        //   shadow: false,
-        //   shadowOffset: 100,
-        //   shadowScale: 0.6
-        // },
       }
     }
   },
@@ -151,15 +144,10 @@ export default {
             this.data.push(item);
           });
         } else {
-          // item.picUrl = '';
-          item.picUrl = 'https://636c-cloudbase-test-0gol5huy820a6898-1305842996.tcb.qcloud.la/images/category01.png';
+          item.picUrl = '';
           this.data.push(item);
         }
       }
-      // console.log(this.$refs.mySwiper);
-      // this.$refs.mySwiper.$swiper.slideTo(0, 1000, false);
-      // this.data.splice(0, this.data.length -1)
-      console.log('this.data', this.data)
     },
     goPay(item) {
       let openid = localStorage.getItem('openid');
@@ -207,14 +195,6 @@ export default {
   margin-top: 10px;
 }
 
-/* .swiper-container-android .swiper-slide,
-.swiper-wrapper {
-  -webkit-transform: translate3d(0px, 0, 0) !important;
-  -moz-transform: translate3d(0px, 0, 0) !important;
-  -o-transform: translate(0px, 0px) !important;
-  -ms-transform: translate3d(0px, 0, 0) !important;
-  transform: translate3d(0px, 0, 0) !important;
-} */
 .slide {
   height: 500px;
   background-color: red;
@@ -228,7 +208,6 @@ export default {
 .product-list .card {
   width: 100%;
   background-color: #fcfcfc;
-  /* box-shadow: 2px 2px 10px #ccc; */
   border-radius: 10px;
 }
 .product-list .card-img {
