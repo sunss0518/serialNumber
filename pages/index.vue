@@ -121,33 +121,39 @@ export default {
       });
     },
     async getPicUrl(data) {
+      let fileids = [];
       for (let x = 0; x < data.length; x++) {
         let item = data[x];
         if (item.fileid) {
-          await this.$axios.$post(
-            '/express-starter/category/getPicUrl',
-            {
-              fileList: item.fileid
-            },
-            {
-              headers: {
-                "Content-Type": "application/json"
-              },
-            }
-          )
-          .then((res) => {
-            item.picUrl = res.res.tempFileURL;
-            this.data.push(item);
-          })
-          .catch((error) => {
-            item.picUrl = '';
-            this.data.push(item);
-          });
+          fileids.push(item.fileid);
         } else {
-          item.picUrl = '';
-          this.data.push(item);
+          fileids.push('');
         }
       }
+      await this.$axios.$post(
+        '/express-starter/category/getPicUrl',
+        {
+          fileList: fileids
+        },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          },
+        }
+      )
+      .then((res) => {
+        let pics = res.res;
+        data.map((item, index) => {
+          item.picUrl = pics[index].tempFileURL;
+        });
+        this.data = data;
+      })
+      .catch((error) => {
+        data.map((item, index) => {
+          item.picUrl = '';
+        });
+        this.data = data;
+      });
     },
     goPay(item) {
       let openid = localStorage.getItem('openid');
