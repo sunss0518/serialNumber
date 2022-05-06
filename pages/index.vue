@@ -24,7 +24,7 @@
               </div>
               <div>
                 <span :style="{ marginRight: '5px', fontSize: '18px', color: '#666666' }">详情：</span>
-                <span :style="{ fontSize: '20px', color: '#333333' }">{{ item.description + 'fjkdjafklas搞飞机啊撒旦看风景啊飞机迪斯科飞机阿三' }}</span>
+                <span :style="{ fontSize: '20px', color: '#333333' }">{{ item.description }}</span>
               </div>
             </div>
           </div>
